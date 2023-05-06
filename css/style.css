@@ -1,0 +1,78 @@
+:root {
+    --success: #36c45c;
+	--info: #1280c9;
+	--warning: #c99410;
+    --error: #be2e35;
+	--exito-hover: #2b8b45;
+	--error-hover: #91252c;
+	--info-hover: #1d5c97;
+	--warning-hover: #a1780f;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    background-color: #222;
+    color: #fff;
+    font-family: 'Mukta', sans-serif;
+}
+
+.container {
+    border: 2px solid red;
+    width: 90%;
+    max-width: 1000px;
+    margin: 80px auto;
+}
+
+.hero .title {
+    font-weight: 800;
+    font-size: 100px;
+    margin-bottom: 40px;
+}
+
+.hero .buttons-container {
+    display: flex;
+    gap: 30px;
+}
+
+.btn {
+	padding: 10px 20px;
+	font-size: 20px;
+	background: #000;
+	border: none;
+	cursor: pointer;
+	color: #fff;
+	border-radius: 10px;
+	transition: 0.3s ease all;
+}
+
+.btn.success {
+	background: var(--success);
+}
+.btn.error {
+	background: var(--error);
+}
+.btn.info {
+	background: var(--info);
+}
+.btn.warning {
+	background: var(--warning);
+}
+
+/* Hover */
+.btn.success:hover {
+	background: var(--exito-hover);
+}
+.btn.error:hover {
+	background: var(--error-hover);
+}
+.btn.info:hover {
+	background: var(--info-hover);
+}
+.btn.warning:hover {
+	background: var(--warning-hover);
+}
