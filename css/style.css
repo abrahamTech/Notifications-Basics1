@@ -3,7 +3,7 @@
 	--info: #1280c9;
 	--warning: #c99410;
     --error: #be2e35;
-	--exito-hover: #2b8b45;
+	--success-hover: #2b8b45;
 	--error-hover: #91252c;
 	--info-hover: #1d5c97;
 	--warning-hover: #a1780f;
@@ -17,8 +17,9 @@
 
 body {
     background-color: #222;
+	border: 1px dashed white;
     color: #fff;
-    font-family: 'Mukta', sans-serif;
+    font-family: 'Inter', sans-serif;
 }
 
 .container {
@@ -30,7 +31,7 @@ body {
 
 .hero .title {
     font-weight: 800;
-    font-size: 100px;
+    font-size: 6.2rem;
     margin-bottom: 40px;
 }
 
@@ -65,7 +66,7 @@ body {
 
 /* Hover */
 .btn.success:hover {
-	background: var(--exito-hover);
+	background: var(--success-hover);
 }
 .btn.error:hover {
 	background: var(--error-hover);
@@ -75,4 +76,77 @@ body {
 }
 .btn.warning:hover {
 	background: var(--warning-hover);
+}
+
+/*Notifications*/
+
+.notifications-container {
+	position: fixed;
+	bottom: 0;
+	right: 0;
+	width: 100%;
+	max-width: 400px;
+	display: flex;
+	flex-direction: column;
+	gap: 1rem;
+}
+
+.notification {
+	display: flex;
+	align-items: center;
+	justify-content: space-between;
+	border-radius: 15px;
+}
+
+.notification.success {
+	background-color: var(--success);
+}
+
+.notification.info {
+	background-color: var(--info);
+}
+
+.notification.warning {
+	background-color: var(--warning);
+}
+
+.notification.error {
+	background-color: var(--error);
+}
+
+/* Content */
+.notification .content {
+	padding: 1rem;
+	display: grid;
+	grid-template-columns: 2rem auto;
+	align-items: center;
+	gap: 1rem;
+}
+
+.notification .content .icon {
+	color: rgba(0, 0, 0, 0.4);
+}
+
+.notification .content .title {
+	font-size: 1.2rem;
+	font-weight: 600;
+	margin-bottom: 0.3rem;
+}
+
+/* Close Button */
+.notification .close-btn {
+	border: none;
+	background: none;
+	cursor: pointer;
+}
+
+.notification .close-btn .icon:hover {
+	color: #fff;
+}
+
+.notification .close-btn .icon {
+	width: 40px;
+	height: 40px;
+	color: rgba(0, 0, 0, 0.4);
+	transition: 0.3s ease all;
 }
