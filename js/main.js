@@ -30,7 +30,7 @@ buttonsCont.addEventListener("click", (e) => {
             type: "warning",
             title: "Warning!",
             description: "Notification to warn you about something about the operation",
-            autoClosing: true
+            autoClosing: false
         });
     }
     else if (type === "error") {
@@ -39,21 +39,38 @@ buttonsCont.addEventListener("click", (e) => {
             type: "error",
             title: "Error!",
             description: "There was an error while processing the operation",
-            autoClosing: true
+            autoClosing: false
         });
     }
 })
 
-const fragment = document.createDocumentFragment();
+// Event Listener to detect click on notifications
+notificationsCont.addEventListener("click", (e) => {
 
+    const notificationId = e.target.closest("div.notification").id;
+
+    if(e.target.closest("button.close-btn")){
+        closeNotification(notificationId);
+    }
+
+})
+
+//Function to Close Notifications
+const closeNotification = (id) => {
+    document.getElementById(id)?.classList.add("closing");
+}
+
+//Function to Add Notifications
 const addNotification = ({ type, title, description, autoClosing }) => {
-    console.log(type, title, description, autoClosing)
+
     //Creating the global notification container
     const newNotification = document.createElement("div");
 
     //Adding Classes
     newNotification.classList.add("notification");
     newNotification.classList.add(type);
+
+    if(autoClosing) newNotification.classList.add("autoClose");
 
     //Adding Notificaction's Id
     const randomNumber = Math.floor(Math.random() * 100);
@@ -112,4 +129,23 @@ const addNotification = ({ type, title, description, autoClosing }) => {
 
     //Adding the complete 
     notificationsCont.appendChild(newNotification);
+
+    //Function to handle notification closing
+    const handleClosingAnimation = (e) => {
+        if(e.animationName === "closing"){
+            setTimeout(()=>{
+                newNotification.removeEventListener("animationend", handleClosingAnimation);
+                newNotification.remove();
+            }, 200);
+        }
+    };
+
+    if(autoClosing){
+        setTimeout(()=>{
+            closeNotification(notificationId);
+        }, 5000);
+    }
+
+    //Event Listener to Detect "closing" animation finished
+    newNotification.addEventListener("animationend", handleClosingAnimation);
 }
